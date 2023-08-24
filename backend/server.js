@@ -9,6 +9,20 @@ const port = 4000;
 // Mongoose Import
 const mongoose = require('mongoose');
 
+//Import routes
+const projectRoutes = require('./routes/projects');
+
+app.use(express.json()) ;// looks for body in the request, will parse it and attaches it to req object
+
+//log out path and method of each request
+app.use((req, res, next) =>{
+    console.log(req.path, req.method);
+    next()
+});
+
+//Attach Routes to the app
+app.use('/api/projects/', projectRoutes)
+
 // Bring in username and password from the .env file
 const mongoUsername = process.env.MONGODB_USERNAME
 const mongoPassword = process.env.MONGODB_PASSWORD
