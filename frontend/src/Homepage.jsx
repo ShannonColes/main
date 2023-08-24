@@ -14,21 +14,21 @@ import { Link } from "react-router-dom";
 
 const Homepage = () => {
   // const state
-  const [students, setStudents] = useState(null);
+  const [projects, setProjects] = useState(null);
 
   useEffect(() => {
-    const fetchStudents = async () => {
+    const fetchProjects = async () => {
       // axios call
-      const response = await axios.get("http://localhost:4000/api/students");
+      const response = await axios.get("http://localhost:4000/api/project");
 
       // check response status is okay (200)
       if (response.status === 200) {
         console.log(response.data);
-        // setWorkouts(response.data);
+        // setStudents(response.data);
       }
     };
 
-    fetchStudents();
+    fetchProjects();
   }, []);
 
   return (
@@ -41,11 +41,11 @@ const Homepage = () => {
       </div>
 
       <div className="students-grid-container">
-        {students.map((student) => (
-          <div key={student.id} className="grid-item">
-            <h3>{student.title}</h3>
-            <p>{student.details}</p>
-            <Link to={`/portfolio/${student.id}`} className="view-btn">
+        {projects.map((project) => (
+          <div key={project.id} className="grid-item">
+            <h3>{project.title}</h3>
+            <p>{project.details}</p>
+            <Link to={`/portfolio/${project.id}`} className="view-btn">
               View
             </Link>
           </div>
