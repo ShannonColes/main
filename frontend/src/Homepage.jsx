@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import { useProjectContext } from "./hooks/useProjectContext";
 // import context ----------------------------------------------------------------
 
 // import components ----------------------------------------------------------------
@@ -14,8 +15,9 @@ import { Link } from "react-router-dom";
 
 const Homepage = () => {
   // const state
-  const [projects, setProjects] = useState(null);
 
+  const {projects, dispatch} = useProjectContext();
+ 
   useEffect(() => {
     const fetchProjects = async () => {
       // axios call
@@ -24,6 +26,7 @@ const Homepage = () => {
       // check response status is okay (200)
       if (response.status === 200) {
         console.log(response.data);
+        dispatch({type: 'SET_WORKOUTS', payload: response.data})
         // setStudents(response.data);
       }
     };
