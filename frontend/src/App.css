@@ -124,3 +124,30 @@ input:focus{
         margin: 0.2rem 0.5rem;
     }
 }
+
+/* Homepage styling */
+
+.headerImg{
+  width: 100vw;
+}
+
+.header{
+  position: absolute;
+  top: 20vh;
+  left: 18vw;
+  font-weight: 700;
+  font-size: 36px;
+  width: 60vw;
+}
+.section-heading{
+  color: black;
+  grid-area: heading;
+}
+
+.students-grid-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+    "heading heading heading"
+  ;
+}

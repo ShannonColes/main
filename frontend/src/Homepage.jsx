@@ -6,7 +6,7 @@ import { useProjectContext } from "./hooks/useProjectContext";
 // import context ----------------------------------------------------------------
 
 // import components ----------------------------------------------------------------
-
+import headerImage from "./assets/header-background.png";
 // Landing image + header
 // h1 students portfolio
 // grid to display students
@@ -44,6 +44,7 @@ const Homepage = () => {
   return (
     <>
       <div className="header-image">
+        <img className="headerImg" src={headerImage} />
         <h2 className="header">
           Yoobee College of Creative Innovation is New Zealand’s largest
           specialist creative and technology college.
@@ -51,6 +52,7 @@ const Homepage = () => {
       </div>
 
       <div className="students-grid-container">
+        <h1 className="section-heading">Sudents Portfolio</h1>
         {projects.map((project) => (
           <div key={project.id} className="grid-item">
             <h3>{project.title}</h3>
