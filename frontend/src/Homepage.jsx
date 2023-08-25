@@ -16,24 +16,31 @@ import { useProjectContext } from "./hooks/useProjectContext";
 const Homepage = () => {
   // const state
 
-  const {projects, dispatch} = useProjectContext();
- 
+  const { projects, dispatch } = useProjectContext();
+
   useEffect(() => {
     const fetchProjects = async () => {
-      // axios call
-      const response = await axios.get("http://localhost:4000/api/project");
+      try {
+        // axios call
+        const response = await axios.get("http://localhost:4000/api/projects");
 
-      // check response status is okay (200)
-      if (response.status === 200) {
-        console.log(response.data);
-        dispatch({type: 'SET_WORKOUTS', payload: response.data})
-        // setStudents(response.data);
+        // check response status is okay (200)
+        if (response.status === 200) {
+          console.log(response.data);
+          dispatch({ type: "SET_WORKOUTS", payload: response.data });
+          // setStudents(response.data);
+        }
+      } catch (error) {
+        console.error("Error Fetching Projects/Console.Error", error);
       }
     };
 
     fetchProjects();
   }, []);
 
+  if (projects === null) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
       <div className="header-image">
