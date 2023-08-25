@@ -11,9 +11,15 @@ const port = 4000;
 const mongoose = require("mongoose");
 
 //Import routes
+
 const projectRoutes = require("./routes/projects");
 
+const projectRoutes = require('./routes/projects');
+const userRoutes = require('./routes/user')
+
+
 app.use(express.json()); // looks for body in the request, will parse it and attaches it to req object
+
 
 //log out path and method of each request
 app.use((req, res, next) => {
@@ -21,10 +27,17 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
+
 app.use(cors());
 
 //Attach Routes to the app
 app.use("/api/projects/", projectRoutes);
+
+app.use('/api/users/', userRoutes)
 
 // Bring in username and password from the .env file
 const mongoUsername = process.env.MONGODB_USERNAME;
