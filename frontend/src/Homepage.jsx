@@ -52,7 +52,7 @@ const Homepage = () => {
       </div>
 
       <div className="students-grid-container">
-        <h1 className="section-heading">Sudents Portfolio</h1>
+        <h1 className="section-heading">Students Portfolio</h1>
         {projects.map((project) => (
           <div key={project.id} className="grid-item">
             <h3>{project.title}</h3>
