@@ -1,36 +1,36 @@
-  /* google font */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-  
-  *{
-    box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-  }
+/* google font */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-  body{
-    font-family: 'Inter', sans-serif;
-  }
-  
-  header {
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+header {
   background-color: black;
-  }
+}
 
 header .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   position: sticky;
   top: 0;
-} 
+}
 
-h1{
+h1 {
   color: aliceblue;
 }
 
-nav ul{
+nav ul {
   display: flex;
 }
 
@@ -51,7 +51,7 @@ nav ul li:hover {
   cursor: pointer;
 }
 
-#menu{
+#menu {
   display: none;
   position: absolute;
   top: 0.75rem;
@@ -63,7 +63,7 @@ nav ul li:hover {
 }
 
 /* search bar */
-.search-bar-container{
+.search-bar-container {
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -79,7 +79,6 @@ nav ul li:hover {
   display: flex;
   align-items: center;
   margin: auto;
-  
 }
 
 input {
@@ -90,37 +89,72 @@ input {
   margin-left: 5px;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
 @media (max-width: 480px) {
-    nav #menu {
-        display: flex;
-    }
+  nav #menu {
+    display: flex;
+  }
 
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    nav ul {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-bottom: 0.25rem;
-    }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
 
-    nav ul.open {
-        display: flex;
-    }
+  nav ul.open {
+    display: flex;
+  }
 
-    nav ul li {
-        width: 100%;
-        text-align: center;
-    }
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
 
-    nav ul li a {
-        margin: 0.2rem 0.5rem;
-    }
+  nav ul li a {
+    margin: 0.2rem 0.5rem;
+  }
 }
+
+/* SIGN-UP & LOGIN IN CSS start --------------------------------------------------- */
+
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f3ece6;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+}
+
+.login-signup-input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid white;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+form button {
+  background: #fbc494;
+  border: 0;
+  color: black;
+  padding: 10px;
+  font-family: "Inter", sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* SIGN-UP LOGIN IN CSS end --------------------------------------------------- */
