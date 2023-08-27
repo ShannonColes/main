@@ -1,34 +1,30 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
 
-// import components
-import Navbar from './components/navbar';
-
-// import pages 
-
-
-function App() {
-
-
-// import components
+// import components & pages
 import Navbar from "./components/navbar";
 import Homepage from "./Homepage";
-import { ProjectsContextProvider } from "./context/projectsContext";
+import Signup from "./Signup";
+import Login from "./Login";
 
 function App() {
+  const { user } = useAuthContext();
 
   return (
-    <ProjectsContextProvider>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
         <Navbar />
-        <Homepage />
-      </div>
-    </ProjectsContextProvider>
+        <div className="pages">
+          <Routes>
+            <Route exact path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </div>
   );
-
-  return <></>;
-
 }
 
 export default App;
