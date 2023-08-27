@@ -16,7 +16,7 @@ const userSchema = new Schema({
     }
 })
 
-userSchema.statics.signup = async function(email,password) {
+userSchema.statics.signup = async function (email, password) {
 
 if(!email || !password){
     throw Error ('all fields must be filled in')
@@ -42,5 +42,26 @@ if(!validator.isStrongPassword(password)){
 
  return user
 }
+
+userSchema.static.login = async function (email, password){
+    if(!email || !password){
+        throw Error('all feilds must be filled')
+    }
+
+    const user = await this.findOne({email})
+
+    if(!user) {
+        throw Error ('incorrect email')
+    }
+
+    const match = await bcrypt.compare(password, user.password)
+
+    if(!match){
+        throw Error('incorrect password')
+    }
+
+    return user
+}
+
 
 module.exports = mongoose.model('User', userSchema)
