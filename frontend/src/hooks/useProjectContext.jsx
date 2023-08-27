@@ -1,4 +1,4 @@
-import { ProjectsContext } from "./context/projectsContext";
+import { ProjectsContext } from "../context/projectsContext";
 import { useContext } from "react";
 
 export const useProjectContext = () => {
