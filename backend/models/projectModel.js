@@ -17,7 +17,12 @@ const projectSchema = new Schema({
     imageURL: {
         type: String,
         required: true
+    },
+    user_id: {
+        type: String,
+        required: true
     }
+
 }, { 
     timestamps: true   // This helps keep track of when projects are created or updated.
 });
