@@ -8,7 +8,9 @@ const Navbar = () => {
     <header>
       <div className="container">
         {/* <Link to="/" className="title">Yoobee College</Link> */}
-        <h1>Yoobee College</h1>
+        <Link to="/">
+          <h1>Yoobee College</h1>
+        </Link>
 
         <nav>
           <button
@@ -30,11 +32,16 @@ const Navbar = () => {
           </div>
 
           <ul className={menuOpen ? "open" : ""}>
-            <li>Home</li>
-            {/* {/* <Link to="/home>home</Link"> } */}
+            <li>
+              <Link to="/Homepage">Home</Link>
+            </li>
             <li>Students</li>
-            <li>Login</li>
-            <li>Sign Up</li>
+            <li>
+              <Link to="/Login">Login</Link>
+            </li>
+            <li>
+              <Link to="/Sign Up">Sign Up</Link>
+            </li>
           </ul>
         </nav>
       </div>

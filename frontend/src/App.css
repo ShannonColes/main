@@ -11,6 +11,7 @@
     font-family: 'Inter', sans-serif;
   }
   
+  /* navbar */
   header {
   background-color: black;
   }
@@ -94,6 +95,8 @@ input:focus{
   outline: none;
 }
 
+
+/* responsive  */
 @media (max-width: 480px) {
     nav #menu {
         display: flex;
