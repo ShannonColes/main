@@ -1,8 +1,8 @@
 import { Form, Link } from "react-router-dom";
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header>
@@ -17,8 +17,7 @@ const Navbar = () => {
             id="menu"
             onClick={() => {
               setMenuOpen(!menuOpen);
-            }}
-          >
+            }}>
             <i className="fa-solid fa-bars"></i>
           </button>
 
@@ -40,13 +39,13 @@ const Navbar = () => {
               <Link to="/Login">Login</Link>
             </li>
             <li>
-              <Link to="/Sign Up">Sign Up</Link>
+              <Link to="/Signup">Sign Up</Link>
             </li>
           </ul>
         </nav>
       </div>
     </header>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
