@@ -1,6 +1,14 @@
 /* google font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+
+  body{
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* navbar */
+  header {
+
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -12,6 +20,7 @@ body {
 }
 
 header {
+
   background-color: black;
 }
 
@@ -93,6 +102,8 @@ input:focus {
   outline: none;
 }
 
+
+/* responsive  */
 @media (max-width: 480px) {
 
   nav #menu {
