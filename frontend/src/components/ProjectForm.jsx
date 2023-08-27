@@ -9,7 +9,23 @@ const ProjectForm = () => {
         e.preventDefault()
 
         const project = {title, description, imageURL}
+        try {
+            const response = await axios.post('http://localhost:4000/api/projects', project, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            setTitle('')
+            setDescription('')
+            setImageURL('')
+            setError(null)
+            console.log('new project added', response.data)
+        } catch (error) {
+            console.error(error)
+        }
     }
+
+    const [error, setError] = useState(null)
 
   return (
     <form className="create" onSubmit={handleSubmit}>
@@ -37,6 +53,7 @@ const ProjectForm = () => {
         />
 
         <button>Add Project</button>
+        {error && <div className="error">{error}</div>}
     </form>
   )
 }
