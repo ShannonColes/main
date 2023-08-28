@@ -4,11 +4,11 @@ export const ProjectsContext = createContext()
 
 export const projectsReducer = (state, action) => {
     switch (action.type) {
-        case 'SET_WORKOUTS':
+        case 'SET_PROJECTS':
             return {
                 projects: action.payload
             }
-        case 'CREATE_WORKOUTS':
+        case 'CREATE_PROJECTS':
             return{
                 projects: [action.payload, ...state.projects]
             }
