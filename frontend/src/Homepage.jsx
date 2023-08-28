@@ -12,6 +12,7 @@ import headerImage from "./assets/header-background.png";
 // grid to display students
 // api call to render the students into a grid of display cards & student names/details
 // student cards button to link to the portfolio page of that student.
+import ProjectDetails from "./components/ProjectDetails";
 
 const Homepage = () => {
   // const state

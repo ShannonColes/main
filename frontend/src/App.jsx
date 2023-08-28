@@ -8,9 +8,6 @@ import Navbar from './components/navbar';
 // import pages 
 
 
-function App() {
-
-
 // import components
 import Navbar from "./components/navbar";
 import Homepage from "./Homepage";
