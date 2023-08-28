@@ -3,12 +3,12 @@ import { useState } from 'react'
 const ProjectForm = () => {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
-    const [imageURL, setImageURL] = useState('')
+    const [image, setImage] = useState(null)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const project = {title, description, imageURL}
+        const project = {title, description}
         try {
             const response = await axios.post('http://localhost:4000/api/projects', project, {
                 headers: {
@@ -45,11 +45,11 @@ const ProjectForm = () => {
             value={description}
         />
 
-        <label>Image:</label>
-        <input
-            type="text"
-            onChange={(e) => setImageURL(e.target.value)}
-            value={reps}
+        <label>Upload Image:</label>
+        <input 
+            type='file' 
+            accept='image/*' 
+            onChange={(e) => setImage(e.target.files[0])} 
         />
 
         <button>Add Project</button>
