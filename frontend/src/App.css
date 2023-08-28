@@ -8,6 +8,8 @@
   
   /* NAVBAR START ------------------------------------------------------------------------- */
   header {
+    
+  }
 
 * {
   box-sizing: border-box;
@@ -190,6 +192,8 @@ form button {
 .section-heading{
   color: black;
   grid-area: heading;
+  text-transform: uppercase;
+  margin: 3vw;
 }
 
 .students-grid-container{
@@ -199,3 +203,32 @@ form button {
     "heading heading heading"
   ;
 }
+
+
+
+.grid-item{
+  background-color:pink;
+  border-radius: 37px;
+  height: 40vh;
+  width: 70%;
+  margin:0 8vw 2vh 8vw;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.grid-item a{
+  background-color: white;
+  width: 5vw;
+  height: 2vw;
+  justify-self: start;
+  align-self: end;
+  margin: 0 0 2vh 2vw;
+  border-radius: 50px;
+  border: solid black 1px;
+  text-align: center;
+  line-height: 2.5vh;
+  text-decoration: none;
+  font-weight: bold;
+}
+

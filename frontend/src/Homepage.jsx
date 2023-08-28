@@ -12,7 +12,16 @@ import headerImage from "./assets/header-background.png";
 // grid to display students
 // api call to render the students into a grid of display cards & student names/details
 // student cards button to link to the portfolio page of that student.
+
 import ProjectDetails from "./components/ProjectDetails";
+
+const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
+
+const getRandomColour = () => {
+  const randomIndex = Math.floor(Math.random() * colourOptions.length);
+  return colourOptions[randomIndex];
+};
+
 
 const Homepage = () => {
   // const state
@@ -51,18 +60,26 @@ const Homepage = () => {
           specialist creative and technology college.
         </h2>
       </div>
-
       <div className="students-grid-container">
         <h1 className="section-heading">Students Portfolio</h1>
-        {projects.map((project) => (
-          <div key={project.id} className="grid-item">
-            <h3>{project.title}</h3>
-            <p>{project.details}</p>
-            <Link to={`/portfolio/${project.id}`} className="view-btn">
-              View
-            </Link>
-          </div>
-        ))}
+        {projects.map((project) => {
+          const randomColour = getRandomColour();
+          return (
+            <div
+              key={project.id}
+              className="grid-item"
+              style={{ backgroundColor: randomColour }}>
+              <h3>{project.title}</h3>
+              <p>{project.details}</p>
+              <Link
+                to={`/portfolio/${project.id}`}
+                className="view-btn"
+                style={{ color: randomColour }}>
+                View
+              </Link>
+            </div>
+          );
+        })}
       </div>
     </>
   );
