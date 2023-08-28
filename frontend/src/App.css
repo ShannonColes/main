@@ -6,7 +6,7 @@
     font-family: 'Inter', sans-serif;
   }
   
-  /* navbar */
+  /* NAVBAR START ------------------------------------------------------------------------- */
   header {
     
   }
@@ -104,8 +104,10 @@ input:focus {
   outline: none;
 }
 
+/* NAVBAR END ------------------------------------------------------------------------ */
 
-/* responsive  */
+
+/* responsive navbar  */
 @media (max-width: 480px) {
 
   nav #menu {
@@ -202,6 +204,8 @@ form button {
   ;
 }
 
+
+
 .grid-item{
   background-color:pink;
   border-radius: 37px;
@@ -227,3 +231,4 @@ form button {
   text-decoration: none;
   font-weight: bold;
 }
+

@@ -12,6 +12,26 @@ export const projectsReducer = (state, action) => {
             return{
                 projects: [action.payload, ...state.projects]
             }
+        case 'DELETE_PROJECTS':
+            return {
+              projects: state.projects.filter(
+                (project) => project._id !== action.payload._id
+              ),
+            }
+        case 'UPDATE_PROJECTS': {
+            const updatedProject = action.payload;
+            const updatedProjects = state.projects.map((project) => {
+            if (project._id === updatedProject._id) {
+                return updatedProject;
+            }
+            return project;
+            });
+            return {
+            projects: updatedProjects,
+            };
+        }
+        
+    
         default:
             return state
     }
@@ -22,7 +42,6 @@ export const ProjectsContextProvider = ({children}) => {
     const [state, dispatch] = useReducer(projectsReducer, {
         projects: null
     })
-
 
     return (
         <ProjectsContext.Provider value={{...state,dispatch}}>
