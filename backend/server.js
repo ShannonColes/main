@@ -16,6 +16,8 @@ const projectRoutes = require("./routes/projects");
 
 const userRoutes = require("./routes/user");
 
+app.use('/public/uploads', express.static('public/uploads'))
+
 app.use(express.json()); // looks for body in the request, will parse it and attaches it to req object
 
 //log out path and method of each request
