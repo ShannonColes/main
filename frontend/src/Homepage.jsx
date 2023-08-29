@@ -33,7 +33,7 @@ const Homepage = () => {
         // check response status is okay (200)
         if (response.status === 200) {
           console.log(response.data);
-          dispatch({ type: "SET_WORKOUTS", payload: response.data });
+          dispatch({ type: "SET_PROJECTS", payload: response.data });
           // setStudents(response.data);
         }
       } catch (error) {
@@ -65,8 +65,13 @@ const Homepage = () => {
               key={project.id}
               className="grid-item"
               style={{ backgroundColor: randomColour }}>
-              <h3>{project.title}</h3>
-              <p>{project.details}</p>
+              <img
+                className="projImage"
+                src={project.imageURL}
+                alt="project image"
+              />
+              <h3 className="projTitle">{project.title}</h3>
+              <p className="projDesc">{project.description}</p>
               <Link
                 to={`/portfolio/${project.id}`}
                 className="view-btn"

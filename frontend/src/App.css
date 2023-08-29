@@ -7,9 +7,6 @@
   }
   
   /* navbar */
-  header {
-    
-  }
 
 * {
   box-sizing: border-box;
@@ -22,7 +19,6 @@ body {
 }
 
 header {
-
   background-color: black;
 }
 
@@ -192,11 +188,14 @@ form button {
   grid-area: heading;
   text-transform: uppercase;
   margin: 3vw;
+  justify-self: start;
 }
 
 .students-grid-container{
   display: grid;
+  gap: 20px;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   grid-template-areas: 
     "heading heading heading"
   ;
@@ -205,12 +204,34 @@ form button {
 .grid-item{
   background-color:pink;
   border-radius: 37px;
+  border:solid black 1px ;
   height: 40vh;
   width: 70%;
-  margin:0 8vw 2vh 8vw;
   display: grid;
   align-items: center;
-  justify-items: center;
+  justify-items: start;
+  
+}
+
+.projTitle{
+  margin: 0 0 2vh 2vw;
+  text-transform: uppercase;
+  color: white;
+  font-size: 28px;
+}
+
+.projDesc{
+  margin: 0 0 2vh 2vw;
+  align-self: start;
+}
+
+.projImage{
+ width: 90%;
+ height: 20vh;
+ justify-self: center;
+ border-radius: 26px;
+ border:solid black 1px ;
+ background-color: white;
 }
 
 .grid-item a{
