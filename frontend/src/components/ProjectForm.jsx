@@ -1,6 +1,10 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { useProjectContext } from '../hooks/useProjectContext'
 
 const ProjectForm = () => {
+    const {dispatch} = useProjectContext()
+
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
     const [imageURL, setImageURL] = useState('')
@@ -8,7 +12,10 @@ const ProjectForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const project = {title, description, imageURL}
+        const user = JSON.parse(localStorage.getItem('user'))
+        const user_id = user.email
+
+        const project = {title, description, imageURL, user_id}
         try {
             const response = await axios.post('http://localhost:4000/api/projects', project, {
                 headers: {
@@ -20,6 +27,7 @@ const ProjectForm = () => {
             setImageURL('')
             setError(null)
             console.log('new project added', response.data)
+            dispatch({type: 'CREATE_PROJECTS', payload: response.data})
         } catch (error) {
             console.error(error)
         }
@@ -45,11 +53,11 @@ const ProjectForm = () => {
             value={description}
         />
 
-        <label>Image:</label>
-        <input
-            type="text"
-            onChange={(e) => setImageURL(e.target.value)}
-            value={reps}
+        <label>Upload Image:</label>
+        <input 
+            type='text' 
+            onChange={(e) => setImageURL(e.target.value)} 
+            value={imageURL}
         />
 
         <button>Add Project</button>

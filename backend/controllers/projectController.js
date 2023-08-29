@@ -30,7 +30,7 @@ const getProject = async (req, res ) => {
 }
 
 const createProject = async (req,res) =>{
-    const {title, description, imageURL} = req.body
+    const {title, description, imageURL, user_id} = req.body
         try{
             const project = await Project.create({title, description, imageURL, user_id})
             res.status(200).json(project)

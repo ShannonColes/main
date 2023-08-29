@@ -6,11 +6,9 @@
     font-family: 'Inter', sans-serif;
   }
   
-  /* navbar */
-  header {
-    
-  }
 
+  /* navbar */
+  /* NAVBAR START ------------------------------------------------------------------------- */
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -22,7 +20,6 @@ body {
 }
 
 header {
-
   background-color: black;
 }
 
@@ -104,8 +101,10 @@ input:focus {
   outline: none;
 }
 
+/* NAVBAR END ------------------------------------------------------------------------ */
 
-/* responsive  */
+
+/* responsive navbar  */
 @media (max-width: 480px) {
 
   nav #menu {
@@ -190,13 +189,68 @@ form button {
 .section-heading{
   color: black;
   grid-area: heading;
+  text-transform: uppercase;
+  margin: 3vw;
+  justify-self: start;
 }
 
 .students-grid-container{
   display: grid;
+  gap: 20px;
   grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
   grid-template-areas: 
     "heading heading heading"
   ;
+}
+
+
+
+.grid-item{
+  background-color:pink;
+  border-radius: 37px;
+  border:solid black 1px ;
+  height: 40vh;
+  width: 70%;
+  display: grid;
+  align-items: center;
+  justify-items: start;
+  
+}
+
+.projTitle{
+  margin: 0 0 2vh 2vw;
+  text-transform: uppercase;
+  color: white;
+  font-size: 28px;
+}
+
+.projDesc{
+  margin: 0 0 2vh 2vw;
+  align-self: start;
+}
+
+.projImage{
+ width: 90%;
+ height: 20vh;
+ justify-self: center;
+ border-radius: 26px;
+ border:solid black 1px ;
+ background-color: white;
+}
+
+.grid-item a{
+  background-color: white;
+  width: 5vw;
+  height: 2vw;
+  justify-self: start;
+  align-self: end;
+  margin: 0 0 2vh 2vw;
+  border-radius: 50px;
+  border: solid black 1px;
+  text-align: center;
+  line-height: 2.5vh;
+  text-decoration: none;
+  font-weight: bold;
 }
 

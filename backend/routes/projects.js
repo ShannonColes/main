@@ -11,6 +11,7 @@ const {
     deleteProject
 } = require ('../controllers/projectController')
 
+
 router.get('/', getProjects)
 
 // GET a single workout

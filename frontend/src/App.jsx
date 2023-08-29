@@ -4,7 +4,11 @@ import "./App.css";
 
 // import components & pages
 import Navbar from "./components/Navbar";
+
 import Footer from "./components/Footer";
+
+
+
 import Homepage from "./Homepage";
 import Signup from "./Signup";
 import Login from "./Login";

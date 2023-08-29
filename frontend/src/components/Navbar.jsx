@@ -32,7 +32,7 @@ const Navbar = () => {
 
           <ul className={menuOpen ? "open" : ""}>
             <li>
-              <Link to="/Homepage">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>Students</li>
             <li>
