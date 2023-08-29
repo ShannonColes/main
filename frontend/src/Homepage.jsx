@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ProjectForm from "./components/ProjectForm";
 
 import { useProjectContext } from "./hooks/useProjectContext";
 // import context ----------------------------------------------------------------
@@ -12,12 +13,16 @@ import headerImage from "./assets/header-background.png";
 // grid to display students
 // api call to render the students into a grid of display cards & student names/details
 // student cards button to link to the portfolio page of that student.
+
+import ProjectDetails from "./components/ProjectDetails";
+
 const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
 
 const getRandomColour = () => {
   const randomIndex = Math.floor(Math.random() * colourOptions.length);
   return colourOptions[randomIndex];
 };
+
 
 const Homepage = () => {
   // const state
@@ -82,6 +87,7 @@ const Homepage = () => {
           );
         })}
       </div>
+      <ProjectForm/>
     </>
   );
 };
