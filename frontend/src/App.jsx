@@ -3,7 +3,8 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 
 // import components & pages
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Homepage from "./Homepage";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );
