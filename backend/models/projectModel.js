@@ -14,10 +14,9 @@ const projectSchema = new Schema({
         type: String,
         required: true
     },
-    image: {
+    imageURL: {
         type: String,
         required: true,
-        default: null
     },
     user_id: {
         type: String,

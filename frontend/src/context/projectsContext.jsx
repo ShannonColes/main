@@ -10,7 +10,7 @@ export const projectsReducer = (state, action) => {
             }
         case 'CREATE_PROJECTS':
             return{
-                projects: [action.payload, ...state.projects]
+                projects: [action.payload, state.projects]
             }
         case 'DELETE_PROJECTS':
             return {
