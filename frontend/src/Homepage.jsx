@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ProjectForm from "./components/ProjectForm";
 
 import { useProjectContext } from "./hooks/useProjectContext";
 // import context ----------------------------------------------------------------
@@ -63,6 +64,7 @@ const Homepage = () => {
           </div>
         ))}
       </div>
+      <ProjectForm/>
     </>
   );
 };
