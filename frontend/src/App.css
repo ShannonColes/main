@@ -1,14 +1,12 @@
 /* google font */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
+body {
+  font-family: "Inter", sans-serif;
+}
 
-  body{
-    font-family: 'Inter', sans-serif;
-  }
-  
-
-  /* navbar */
-  /* NAVBAR START ------------------------------------------------------------------------- */
+/* navbar */
+/* NAVBAR START ------------------------------------------------------------------------- */
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -52,8 +50,15 @@ nav ul li {
   border-radius: 0.5rem;
   font-weight: 700;
 }
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 0 0.5rem;
+}
 
-nav ul li:hover {
+nav ul li a:hover {
   background-color: bisque;
   color: black;
   cursor: pointer;
@@ -103,10 +108,8 @@ input:focus {
 
 /* NAVBAR END ------------------------------------------------------------------------ */
 
-
 /* responsive navbar  */
 @media (max-width: 480px) {
-
   nav #menu {
     display: flex;
   }
@@ -174,11 +177,11 @@ form button {
 
 /* Homepage styling */
 
-.headerImg{
+.headerImg {
   width: 100vw;
 }
 
-.header{
+.header {
   position: absolute;
   top: 20vh;
   left: 18vw;
@@ -186,7 +189,7 @@ form button {
   font-size: 36px;
   width: 60vw;
 }
-.section-heading{
+.section-heading {
   color: black;
   grid-area: heading;
   text-transform: uppercase;
@@ -194,52 +197,47 @@ form button {
   justify-self: start;
 }
 
-.students-grid-container{
+.students-grid-container {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  grid-template-areas: 
-    "heading heading heading"
-  ;
+  grid-template-areas: "heading heading heading";
 }
 
-
-
-.grid-item{
-  background-color:pink;
+.grid-item {
+  background-color: pink;
   border-radius: 37px;
-  border:solid black 1px ;
+  border: solid black 1px;
   height: 40vh;
   width: 70%;
   display: grid;
   align-items: center;
   justify-items: start;
-  
 }
 
-.projTitle{
+.projTitle {
   margin: 0 0 2vh 2vw;
   text-transform: uppercase;
   color: white;
   font-size: 28px;
 }
 
-.projDesc{
+.projDesc {
   margin: 0 0 2vh 2vw;
   align-self: start;
 }
 
-.projImage{
- width: 90%;
- height: 20vh;
- justify-self: center;
- border-radius: 26px;
- border:solid black 1px ;
- background-color: white;
+.projImage {
+  width: 90%;
+  height: 20vh;
+  justify-self: center;
+  border-radius: 26px;
+  border: solid black 1px;
+  background-color: white;
 }
 
-.grid-item a{
+.grid-item a {
   background-color: white;
   width: 5vw;
   height: 2vw;
@@ -254,3 +252,15 @@ form button {
   font-weight: bold;
 }
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background: #fbc494;
+  margin-top: 4rem;
+  padding: 2rem;
+  align-items: center;
+}
+
+.footer-socials img {
+  margin: 0rem 1rem;
+}
