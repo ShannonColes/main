@@ -2,16 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 
-
-// import components
-import Navbar from './components/navbar';
-
-// import pages 
-
-
-// import components
-import Navbar from "./components/navbar";
-
 // import components & pages
 import Navbar from "./components/Navbar";
 
