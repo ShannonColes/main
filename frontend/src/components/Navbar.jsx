@@ -1,8 +1,17 @@
-import { Form, Link } from "react-router-dom";
-import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const {user} = useAuthContext()
+
+  const {logout} = useLogout()
+
+  const handleClick = () => {
+    logout()
+  }
 
   return (
     <header>
@@ -35,12 +44,17 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>Students</li>
-            <li>
-              <Link to="/Login">Login</Link>
-            </li>
-            <li>
-              <Link to="/Signup">Sign Up</Link>
-            </li>
+
+          {user && (<div>
+            <span>{user.email}</span>
+            <button onClick={handleClick}>Log out</button>
+          </div>)}
+
+          {!user && (<div>
+            <Link to='/login'>Login</Link>
+            <Link to='/signup'>Signup</Link>
+          </div>)}
+
           </ul>
         </nav>
       </div>

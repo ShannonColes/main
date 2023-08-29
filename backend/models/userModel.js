@@ -43,7 +43,7 @@ if(!validator.isStrongPassword(password)){
  return user
 }
 
-userSchema.static.login = async function (email, password){
+userSchema.statics.login = async function (email, password){
     if(!email || !password){
         throw Error('all feilds must be filled')
     }
