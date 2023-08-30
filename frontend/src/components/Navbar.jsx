@@ -61,12 +61,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        <ul className={menuOpen ? "open" : ""}>
-          {/* <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>Students</li> */}
-        </ul>
+        {/* <ul className={menuOpen ? "open" : ""}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>Students</li>
+        </ul> */}
       </nav>
     </header>
   );

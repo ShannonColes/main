@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import ProjectForm from "./components/ProjectForm";
-import { useProjectContext } from "./hooks/useProjectContext";
-import { v4 as uuidv4 } from "uuid";
+import { InfinitySpin } from "react-loader-spinner";
 // import context ----------------------------------------------------------------
-
+import { useProjectContext } from "./hooks/useProjectContext";
 // import components ----------------------------------------------------------------
 import headerImage from "./assets/header-background.png";
+import ProjectForm from "./components/ProjectForm";
+import ProjectDetails from "./components/ProjectDetails";
 // Landing image + header
 // h1 students portfolio
 // grid to display students
 // api call to render the students into a grid of display cards & student names/details
 // student cards button to link to the portfolio page of that student.
-
-import ProjectDetails from "./components/ProjectDetails";
 
 const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
 
@@ -25,7 +23,6 @@ const getRandomColour = () => {
 
 const Homepage = () => {
   // const state
-
   const { projects, dispatch } = useProjectContext();
 
   useEffect(() => {
@@ -49,22 +46,32 @@ const Homepage = () => {
   }, []);
 
   if (projects === null) {
-    return <p>Loading...</p>;
+    const randomColour = getRandomColour();
+    return (
+      <div className="loader-container">
+        <InfinitySpin
+          visible={true}
+          color={randomColour}
+          size={100}
+          speed={1}
+          style={{ display: "block", margin: "0 auto" }}
+        />
+      </div>
+    );
   }
 
   const projectElements = projects.map((project) => {
     const randomColour = getRandomColour();
-    const uniqueKey = uuidv4();
     return (
       <div
-        key={uniqueKey}
+        key={project._id}
         className="grid-item"
         style={{ backgroundColor: randomColour }}>
         <img className="projImage" src={project.imageURL} alt="project image" />
         <h3 className="projTitle">{project.title}</h3>
         <p className="projDesc">{project.description}</p>
         <Link
-          to={`/portfolio/${project.id}`}
+          to={`/portfolio/${project.user_id}`}
           className="view-btn"
           style={{ color: randomColour }}>
           View

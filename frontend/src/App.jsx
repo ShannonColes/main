@@ -7,8 +7,6 @@ import Navbar from "./components/Navbar";
 
 import Footer from "./components/Footer";
 
-
-
 import Homepage from "./Homepage";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -29,7 +27,7 @@ function App() {
             <Route path="/profile" element={ user ? <Profile/> : <Navigate to={'/login'}/>}/>
           </Routes>
         </div>
-        <Footer />
+        <Footer /> 
       </BrowserRouter>
     </div>
   );
