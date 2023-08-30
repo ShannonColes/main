@@ -26,6 +26,7 @@ const Navbar = () => {
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}>
+            THIS IS THE MENU BUTTON
           <i className="fa-solid fa-bars"></i>
         </button>
 
@@ -43,29 +44,30 @@ const Navbar = () => {
         <div className="user-login">
           <div className="user-wrapper">
             <div id="profile-icon">
-              <Link to="/Signup">
-                <h1><i className="fa-solid fa-circle-user spin-hover"></i> Signup</h1>
-              </Link>
+            <i className="fa-solid fa-circle-user spin-hover"></i>
+              {!user && [
+                <Link to="/login" className="profile-btn">
+                  Login
+                </Link>,
+                <Link to="/signup" className="profile-btn">
+                  Signup
+                </Link>
+              ]}
+              {
+                user && [
+                  <span>{user.email}</span>,
+                  <button onClick={handleClick} className="profile-btn">Log out</button>
+                ]
+              }
             </div>
           </div>
         </div>
 
         <ul className={menuOpen ? "open" : ""}>
-            <li>
+            {/* <li>
               <Link to="/">Home</Link>
             </li>
-            <li>Students</li>
-
-          {user && (<div>
-            <span>{user.email}</span>
-            <button onClick={handleClick}>Log out</button>
-          </div>)}
-
-          {!user && (<div>
-            <Link to='/login'>Login</Link>
-            <Link to='/signup'>Signup</Link>
-          </div>)}
-
+            <li>Students</li> */}
           </ul>
       </nav>
     </header>

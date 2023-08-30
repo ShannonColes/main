@@ -138,6 +138,23 @@ input:focus {
   animation: spin 1s infinite;
 }
 
+#profile-icon {
+  color: #fff;
+}
+
+.fa-solid {
+  margin: 5px;
+}
+
+.profile-btn {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  padding: 8px;
+  background-color: bisque;
+  border-radius: 10px;
+  margin: 10px;
+}
+
 /* NAVBAR END ------------------------------------------------------------------------ */
 
 /* responsive navbar  */
