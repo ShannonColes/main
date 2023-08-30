@@ -3,7 +3,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import ProjectForm from "./components/ProjectForm";
 import { useProjectContext } from "./hooks/useProjectContext";
-import { v4 as uuidv4 } from "uuid";
 // import context ----------------------------------------------------------------
 
 // import components ----------------------------------------------------------------
@@ -54,10 +53,9 @@ const Homepage = () => {
 
   const projectElements = projects.map((project) => {
     const randomColour = getRandomColour();
-    const uniqueKey = `${uuidv4()}-${project.user_id}`;
     return (
       <div
-        key={uniqueKey}
+        key={project._id}
         className="grid-item"
         style={{ backgroundColor: randomColour }}>
         <img className="projImage" src={project.imageURL} alt="project image" />
