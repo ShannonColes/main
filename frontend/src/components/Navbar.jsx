@@ -52,7 +52,7 @@ const Navbar = () => {
                 </Link>,
               ]}
               {user && [
-                <span>{user.email}</span>,
+                <Link to="/profile">{user.email}</Link>,
                 <button onClick={handleClick} className="profile-btn">
                   Log out
                 </button>,

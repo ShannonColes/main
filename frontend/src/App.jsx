@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Homepage from "./Homepage";
 import Signup from "./Signup";
 import Login from "./Login";
+import Profile from "./profile";
 
 function App() {
   const { user } = useAuthContext();
@@ -25,6 +26,7 @@ function App() {
             <Route exact path="/" element={user ? <Homepage/> : <Navigate to={'/login'}/>}/>
             <Route path='/login' element={ !user ? <Login/> : <Navigate to={'/'}/>}/>
             <Route path='/signup' element={ !user ? <Signup/> : <Navigate to={'/'}/>}/>
+            <Route path="/profile" element={ user ? <Profile/> : <Navigate to={'/login'}/>}/>
           </Routes>
         </div>
         <Footer />
