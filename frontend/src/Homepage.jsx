@@ -23,26 +23,22 @@ const getRandomColour = () => {
 
 const Homepage = () => {
   // const state
-  const [isLoading, setIsLoading] = useState(true);
   const { projects, dispatch } = useProjectContext();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         // axios call
-        setIsLoading(true);
         const response = await axios.get("http://localhost:4000/api/projects");
 
         // check response status is okay (200)
         if (response.status === 200) {
           console.log(response.data);
           dispatch({ type: "SET_PROJECTS", payload: response.data });
-          setIsLoading(false);
           // setStudents(response.data);
         }
       } catch (error) {
         console.error("Error Fetching Projects/Console.Error", error);
-        setIsLoading(true);
       }
     };
 
