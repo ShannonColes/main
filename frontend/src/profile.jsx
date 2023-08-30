@@ -1,8 +1,7 @@
-import {useEffect} from 'react'
-import axios from 'axios'
-import ProjectForm from './components/ProjectForm'
+import { useEffect } from "react";
+import axios from "axios";
+import ProjectForm from "./components/ProjectForm";
 import { useProjectContext } from "./hooks/useProjectContext";
-
 
 const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
 
@@ -12,10 +11,9 @@ const getRandomColour = () => {
 };
 
 const Profile = () => {
+  const { projects, dispatch } = useProjectContext();
 
-    const { projects, dispatch } = useProjectContext();
- 
-useEffect(() => {
+  useEffect(() => {
     const fetchProjects = async () => {
       try {
         // axios call
@@ -33,40 +31,41 @@ useEffect(() => {
     };
 
     fetchProjects();
-}, []);
+  }, []);
 
   const projectElements = projects.map((project) => {
     const randomColour = getRandomColour();
-    const user = JSON.parse(localStorage.getItem('user'))
-    const user_id = user.email
-    
-    if (user_id === project.user_id){
-    return (
-      <div
-        className="grid-item"
-        style={{ backgroundColor: randomColour }}>
-        <img className="projImage" src={project.imageURL} alt="project image" />
-        <h3 className="projTitle">{project.title}</h3>
-        <p className="projDesc">{project.description}</p>
-      </div>
-    );}
+    const user = JSON.parse(localStorage.getItem("user"));
+    const user_id = user.email;
 
+    if (user_id === project.user_id) {
+      return (
+        <div
+          key={project._id}
+          className="grid-item"
+          style={{ backgroundColor: randomColour }}>
+          <img
+            className="projImage"
+            src={project.imageURL}
+            alt="project image"
+          />
+          <h3 className="projTitle">{project.title}</h3>
+          <p className="projDesc">{project.description}</p>
+        </div>
+      );
+    }
   });
 
-    if (projects === null) {
+  if (projects === null) {
     return <p>Loading...</p>;
   }
 
-return (
+  return (
     <div>
-      <ProjectForm/>
-        <div>
-            {projectElements}
-        </div>
+      <ProjectForm />
+      <div>{projectElements}</div>
     </div>
-  )
+  );
 };
-  
 
-
-export default Profile
+export default Profile;
