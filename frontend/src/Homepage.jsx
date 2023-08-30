@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ProjectForm from "./components/ProjectForm";
-
 import { useProjectContext } from "./hooks/useProjectContext";
+import { v4 as uuidv4 } from "uuid";
 // import context ----------------------------------------------------------------
 
 // import components ----------------------------------------------------------------
@@ -22,7 +22,6 @@ const getRandomColour = () => {
   const randomIndex = Math.floor(Math.random() * colourOptions.length);
   return colourOptions[randomIndex];
 };
-
 
 const Homepage = () => {
   // const state
@@ -52,6 +51,28 @@ const Homepage = () => {
   if (projects === null) {
     return <p>Loading...</p>;
   }
+
+  const projectElements = projects.map((project) => {
+    const randomColour = getRandomColour();
+    const uniqueKey = uuidv4();
+    return (
+      <div
+        key={uniqueKey}
+        className="grid-item"
+        style={{ backgroundColor: randomColour }}>
+        <img className="projImage" src={project.imageURL} alt="project image" />
+        <h3 className="projTitle">{project.title}</h3>
+        <p className="projDesc">{project.description}</p>
+        <Link
+          to={`/portfolio/${project.id}`}
+          className="view-btn"
+          style={{ color: randomColour }}>
+          View
+        </Link>
+      </div>
+    );
+  });
+
   return (
     <>
       <div className="header-image">
@@ -63,31 +84,9 @@ const Homepage = () => {
       </div>
       <div className="students-grid-container">
         <h1 className="section-heading">Students Portfolio</h1>
-        {projects.map((project) => {
-          const randomColour = getRandomColour();
-          return (
-            <div
-              key={project.id}
-              className="grid-item"
-              style={{ backgroundColor: randomColour }}>
-              <img
-                className="projImage"
-                src={project.imageURL}
-                alt="project image"
-              />
-              <h3 className="projTitle">{project.title}</h3>
-              <p className="projDesc">{project.description}</p>
-              <Link
-                to={`/portfolio/${project.id}`}
-                className="view-btn"
-                style={{ color: randomColour }}>
-                View
-              </Link>
-            </div>
-          );
-        })}
+        {projectElements}
       </div>
-      <ProjectForm/>
+      <ProjectForm />
     </>
   );
 };
