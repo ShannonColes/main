@@ -43,30 +43,33 @@ const Navbar = () => {
           <div className="user-wrapper">
             <div id="profile-icon">
               <i className="fa-solid fa-circle-user spin-hover"></i>
-              {!user && [
-                <Link to="/login" className="profile-btn">
-                  Login
-                </Link>,
-                <Link to="/signup" className="profile-btn">
-                  Signup
-                </Link>,
-              ]}
-              {user && [
-                <span>{user.email}</span>,
-                <button onClick={handleClick} className="profile-btn">
-                  Log out
-                </button>,
-              ]}
+              {!user ? (
+                <>
+                  <Link to="/login" className="profile-btn">
+                    Login
+                  </Link>
+                  <Link to="/signup" className="profile-btn">
+                    Signup
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <span>{user.email}</span>
+                  <button onClick={handleClick} className="profile-btn">
+                    Log out
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
 
-        <ul className={menuOpen ? "open" : ""}>
-          {/* <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>Students</li> */}
-        </ul>
+        {/* <ul className={menuOpen ? "open" : ""}>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>Students</li>
+        </ul> */}
       </nav>
     </header>
   );
