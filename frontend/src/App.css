@@ -32,7 +32,6 @@ header > .container {
   top: 0;
 }
 
-
 nav {
   display: flex;
   flex-direction: row;
@@ -153,6 +152,10 @@ input:focus {
   background-color: bisque;
   border-radius: 10px;
   margin: 10px;
+}
+
+.logo{
+  text-decoration: none;
 }
 
 /* NAVBAR END ------------------------------------------------------------------------ */
