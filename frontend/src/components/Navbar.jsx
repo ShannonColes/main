@@ -5,19 +5,19 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const {user} = useAuthContext()
+  const { user } = useAuthContext();
 
-  const {logout} = useLogout()
+  const { logout } = useLogout();
 
   const handleClick = () => {
-    logout()
-  }
+    logout();
+  };
 
   return (
     <header>
       <nav className="container">
         {/* <Link to="/" className="title">Yoobee College</Link> */}
-        <Link to="/">
+        <Link className="logo" to="/">
           <h1>Yoobee College</h1>
         </Link>
 
@@ -26,7 +26,7 @@ const Navbar = () => {
           onClick={() => {
             setMenuOpen(!menuOpen);
           }}>
-            THIS IS THE MENU BUTTON
+          THIS IS THE MENU BUTTON
           <i className="fa-solid fa-bars"></i>
         </button>
 
@@ -39,36 +39,34 @@ const Navbar = () => {
           </div>
         </div>
 
-
-
         <div className="user-login">
           <div className="user-wrapper">
             <div id="profile-icon">
-            <i className="fa-solid fa-circle-user spin-hover"></i>
+              <i className="fa-solid fa-circle-user spin-hover"></i>
               {!user && [
                 <Link to="/login" className="profile-btn">
                   Login
                 </Link>,
                 <Link to="/signup" className="profile-btn">
                   Signup
-                </Link>
+                </Link>,
               ]}
-              {
-                user && [
-                  <span>{user.email}</span>,
-                  <button onClick={handleClick} className="profile-btn">Log out</button>
-                ]
-              }
+              {user && [
+                <span>{user.email}</span>,
+                <button onClick={handleClick} className="profile-btn">
+                  Log out
+                </button>,
+              ]}
             </div>
           </div>
         </div>
 
         <ul className={menuOpen ? "open" : ""}>
-            {/* <li>
+          {/* <li>
               <Link to="/">Home</Link>
             </li>
             <li>Students</li> */}
-          </ul>
+        </ul>
       </nav>
     </header>
   );
