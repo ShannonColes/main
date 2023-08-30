@@ -54,7 +54,7 @@ const Homepage = () => {
 
   const projectElements = projects.map((project) => {
     const randomColour = getRandomColour();
-    const uniqueKey = uuidv4();
+    const uniqueKey = `${uuidv4()}-${project.user_id}`;
     return (
       <div
         key={uniqueKey}
@@ -64,7 +64,7 @@ const Homepage = () => {
         <h3 className="projTitle">{project.title}</h3>
         <p className="projDesc">{project.description}</p>
         <Link
-          to={`/portfolio/${project.id}`}
+          to={`/portfolio/${project.user_id}`}
           className="view-btn"
           style={{ color: randomColour }}>
           View
