@@ -45,9 +45,9 @@ const ProjectDetails = ({ project }) => {
   const handleSubmitEdit = async () => {
     // This defines the objects that are being sent up
     const updatedProjects = {
-      title: setEditTitle,
-      description: setEditDescription,
-      imageURL: setEditImageURL,
+      title: editTitle,
+      description: editDescription,
+      imageURL: editImage,
     };
 
     // axios call
@@ -57,11 +57,12 @@ const ProjectDetails = ({ project }) => {
         `http://localhost:4000/api/projects/${project._id}`,
         updatedProjects
       );
-      const updatedProjects = response.data;
+
+      const updatedData = response.data;
 
       if (response.status === 200) {
-        console.log(updatedData);
         dispatch({ type: "UPDATE_PROJECT", payload: updatedData });
+        console.log(updatedData);
         setIsEditing(false);
       }
     } catch (error) {
