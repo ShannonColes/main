@@ -1,51 +1,54 @@
-import { useState } from 'react'
-import axios from 'axios'
+import { useState } from "react";
+import axios from "axios";
 
 // import context hook
-import { useProjectContext } from '../hooks/useProjectContext'
+import { useProjectContext } from "../hooks/useProjectContext";
 
-const ProjectDetails = ({ project }) => { 
+const ProjectDetails = ({ project }) => {
+  if (!project) {
+    console.error("Error not found");
+    return null;
+  }
 
   // dispatch method
-  const { dispatch } = useProjectContext()
+  const { dispatch } = useProjectContext();
 
-  // editing state 
-  const [isEditing, setIsEditing] = useState(false)
+  // editing state
+  const [isEditing, setIsEditing] = useState(false);
 
-  // state for our edit form 
-  const [editTitle, setEditTitle] = useState(project.title)
-  const [editDescription, setEditDescription] = useState(project.description)
-  const [editImage, setEditImageURL] = useState(project.image)
+  // state for our edit form
+  const [editTitle, setEditTitle] = useState(project.title);
+  const [editDescription, setEditDescription] = useState(project.description);
+  const [editImage, setEditImageURL] = useState(project.image);
 
   // Define a function named handleEdit
   const handleEdit = () => {
     // Call a function to set the isEditing state to true
-    setIsEditing(true)
-  }
+    setIsEditing(true);
+  };
 
   // Define a function named handleCancelEdit
   const handleCancelEdit = () => {
     // Set the title back to the original projects name
-    setEditTitle(project.title)
+    setEditTitle(project.title);
 
     // Set the description back to the original projects description
-    setEditDescription(project.description)
+    setEditDescription(project.description);
 
     // Set the image back to the original projects image
-    setEditImageURL(project.image)
+    setEditImageURL(project.image);
 
     // Set the isEditing state to false, which means that the editing mode is being cancelled
-    setIsEditing(false)
-  }
+    setIsEditing(false);
+  };
 
   const handleSubmitEdit = async () => {
-    // This defines the objects that are being sent up 
+    // This defines the objects that are being sent up
     const updatedProjects = {
       title: setEditTitle,
-      description: setEditDescription, 
-      imageURL: setEditImageURL
-    }
-
+      description: setEditDescription,
+      imageURL: setEditImageURL,
+    };
 
     // axios call
     // updating project
@@ -53,31 +56,31 @@ const ProjectDetails = ({ project }) => {
       const response = await axios.patch(
         `http://localhost:4000/api/projects/${project._id}`,
         updatedProjects
-      )
-      const updatedProjects = response.data
+      );
+      const updatedProjects = response.data;
 
       if (response.status === 200) {
         console.log(updatedData);
-        dispatch({ type: 'UPDATE_PROJECT', payload: updatedData })
-        setIsEditing(false)
+        dispatch({ type: "UPDATE_PROJECT", payload: updatedData });
+        setIsEditing(false);
       }
-
     } catch (error) {
-      console.error('Error updating project:', error);
+      console.error("Error updating project:", error);
     }
-  }
+  };
 
   // delete project
   const handleDelete = async () => {
-    const response = await axios.delete(`http://localhost:4000/api/projects/${project._id}`)
+    const response = await axios.delete(
+      `http://localhost:4000/api/projects/${project._id}`
+    );
 
-    const json = await response.data
+    const json = await response.data;
     if (response.status === 200) {
-      console.log(json)
-      dispatch({ type: 'DELETE_PROJECTS', payload: json })
+      console.log(json);
+      dispatch({ type: "DELETE_PROJECTS", payload: json });
     }
-  
-  }
+  };
 
   return (
     <div className="project-details">
@@ -125,20 +128,20 @@ const ProjectDetails = ({ project }) => {
           )}
 
           {/* delete button*/}
-          <span onClick={handleDelete} className="delete">
-            <i className="fa-solid fa-trash"></i>
-          </span>
-
-          {/* edit button */}
-          <span onClick={handleEdit} className="edit">
-            <i className="fa-solid fa-pen-to-square"></i>
-          </span>
+          {currentUser && currentUser.email === project.user_id && (
+            <>
+              <span onClick={handleDelete} className="delete">
+                <i className="fa-solid fa-trash"></i>
+              </span>
+              <span onClick={handleEdit} className="edit">
+                <i className="fa-solid fa-pen-to-square"></i>
+              </span>
+            </>
+          )}
         </>
       )}
     </div>
-  ); 
-}
+  );
+};
 
-
-
-export default ProjectDetails
+export default ProjectDetails;

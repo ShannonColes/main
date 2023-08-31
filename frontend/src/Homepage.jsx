@@ -93,7 +93,6 @@ const Homepage = () => {
         <h1 className="section-heading">Students Portfolio</h1>
         {projectElements}
       </div>
-      <ProjectForm />
     </>
   );
 };
