@@ -160,15 +160,16 @@ input:focus {
   border-radius: 10px;
   font-weight: bold;
   margin: 10px;
-}
-.profile-btn a {
-  color: black;
+
 }
 
 .logo {
   text-decoration: none;
 }
 
+a.profile-btn {
+  color: black;
+}
 /* NAVBAR END ------------------------------------------------------------------------ */
 
 /* responsive navbar  */
