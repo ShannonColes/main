@@ -43,7 +43,10 @@ const Homepage = () => {
   }
 
   const profileElements = profiles.map((profile) => (
-    <div className="grid-item" style={{ backgroundColor: randomColour }}>
+    <div
+      key={profile.email}
+      className="grid-item"
+      style={{ backgroundColor: randomColour }}>
       <img className="projImage" src={userImage} />
       <p className="projTitle">{profile.name}</p>
       <p className="projDesc">
@@ -72,76 +75,5 @@ const Homepage = () => {
       <div className="students-grid-container">{profileElements}</div>
     </>
   );
-  //   useEffect(() => {
-  //     const fetchProjects = async () => {
-  //       try {
-  //         // axios call
-  //         const response = await axios.get("http://localhost:4000/api/projects");
-
-  //         // check response status is okay (200)
-  //         if (response.status === 200) {
-  //           console.log(response.data);
-  //           dispatch({ type: "SET_PROJECTS", payload: response.data });
-  //           // setStudents(response.data);
-  //         }
-  //       } catch (error) {
-  //         console.error("Error Fetching Projects/Console.Error", error);
-  //       }
-  //     };
-
-  //     fetchProjects();
-  //   }, []);
-
-  //   if (projects === null) {
-  //     const randomColour = getRandomColour();
-  //     return (
-  //       <div className="loader-container">
-  //         <InfinitySpin
-  //           visible={true}
-  //           color={randomColour}
-  //           size={100}
-  //           speed={1}
-  //           style={{ display: "block", margin: "0 auto" }}
-  //         />
-  //       </div>
-  //     );
-  //   }
-
-  //   const projectElements = projects.map((project) => {
-  //     const randomColour = getRandomColour();
-  //     return (
-  //       <div
-  //         key={project._id}
-  //         className="grid-item"
-  //         style={{ backgroundColor: randomColour }}>
-  //         <img className="projImage" src={project.imageURL} alt="project image" />
-  //         <h3 className="projTitle">{project.title}</h3>
-  //         <p className="projDesc">{project.description}</p>
-  //         <Link
-  //           to={`/portfolio/${project.user_id}`}
-  //           className="view-btn"
-  //           style={{ color: randomColour }}>
-  //           View
-  //         </Link>
-  //       </div>
-  //     );
-  //   });
-
-  //   return (
-  //     <>
-  //       <div className="header-image">
-  //         <img className="headerImg" src={headerImage} />
-  //         <h2 className="header">
-  //           Yoobee College of Creative Innovation is New Zealand’s largest
-  //           specialist creative and technology college.
-  //         </h2>
-  //       </div>
-  //       <div className="students-grid-container">
-  //         <h1 className="section-heading">Students Portfolio</h1>
-  //         {projectElements}
-  //       </div>
-  //     </>
-  //   );
-  // };
 };
 export default Homepage;
