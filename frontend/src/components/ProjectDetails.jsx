@@ -128,7 +128,7 @@ const ProjectDetails = ({ project }) => {
           )}
 
           {/* delete button*/}
-          {currentUser && currentUser.email === project.user_id && (
+          {
             <>
               <span onClick={handleDelete} className="delete">
                 <i className="fa-solid fa-trash"></i>
@@ -137,7 +137,7 @@ const ProjectDetails = ({ project }) => {
                 <i className="fa-solid fa-pen-to-square"></i>
               </span>
             </>
-          )}
+          }
         </>
       )}
     </div>
