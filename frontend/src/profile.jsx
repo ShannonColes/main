@@ -1,25 +1,27 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ProjectForm from "./components/ProjectForm";
-import { useProjectContext } from "./hooks/useProjectContext";
 import ProjectDetails from "./components/ProjectDetails";
+import ProjectForm from "./components/ProjectForm";
+import { useParams } from "react-router-dom";
 
 const getRandomColour = () => {
   const randomIndex = Math.floor(Math.random() * colourOptions.length);
   return colourOptions[randomIndex];
 };
+
 const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
 
-const Profile = ({ userId }) => {
+const Profile = () => {
   const [userProjects, setUserProjects] = useState([]);
+  const { user_id } = useParams(); // Get user_id from route parameters
 
   useEffect(() => {
     const fetchUserProjects = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/projects?user_id=${userId}`
+          `http://localhost:4000/api/projects?user_id=${user_id}`
         );
-
+        console.log("API RESPONSE:", response.data);
         if (response.status === 200) {
           setUserProjects(response.data);
         }
@@ -29,11 +31,9 @@ const Profile = ({ userId }) => {
     };
 
     fetchUserProjects();
-  }, [userId]);
+  }, [user_id]);
 
-const randomColour = getRandomColour();
-const projectElements = userProjects.map((project) => {
-  return (
+  const projectElements = userProjects.map((project) => (
     <div
       key={project._id}
       className="grid-item"
@@ -43,16 +43,14 @@ const projectElements = userProjects.map((project) => {
       <p className="projDesc">{project.description}</p>
       <ProjectDetails project={project} />
     </div>
-  );
-});
+  ));
 
   return (
-
-  <div>
-    {projectElements}
-    <ProjectForm />
-  </div>
-)
+    <div>
+      {projectElements}
+      <ProjectForm />
+    </div>
+  );
 };
 //   const { projects, dispatch } = useProjectContext();
 //   const user = JSON.parse(localStorage.getItem("user"));

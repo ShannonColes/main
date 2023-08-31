@@ -24,7 +24,7 @@ const getRandomColour = () => {
 
 const Homepage = () => {
   // const state
-  const { profiles } = useAuthContext()
+  const { profiles } = useAuthContext();
 
   console.log("userProfiles:", profiles);
   // console.log("profileElements:", profileElements);
@@ -45,7 +45,10 @@ const Homepage = () => {
   }
 
   const profileElements = profiles.map((profile) => (
-    <Link key={profile._id} to={`/profile/${profile._id}`} className="profile-link">
+    <Link
+      key={profile._id}
+      to={`/profile/${profile._id}`}
+      className="profile-link">
       <div
         className="user-profile"
         style={{ backgroundColor: getRandomColour() }}>
@@ -140,5 +143,5 @@ const Homepage = () => {
   //     </>
   //   );
   // };
-}
+};
 export default Homepage;

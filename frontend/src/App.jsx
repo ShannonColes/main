@@ -21,13 +21,28 @@ function App() {
         <Navbar />
         <div className="pages">
           <Routes>
-            <Route exact path="/" element={user ? <Homepage/> : <Navigate to={'/login'}/>}/>
-            <Route path='/login' element={ !user ? <Login/> : <Navigate to={'/'}/>}/>
-            <Route path='/signup' element={ !user ? <Signup/> : <Navigate to={'/'}/>}/>
-            <Route path="/profile/:userId" element={user ? <Profile/> : <Navigate to={'/login'}/>}/>
+            <Route
+              exact
+              path="/"
+              element={user ? <Homepage /> : <Navigate to={"/login"} />}
+            />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/signup"
+              element={!user ? <Signup /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/profile/:userId"
+              element={
+                user ? <Profile userId={user.id} /> : <Navigate to={"/login"} />
+              }
+            />
           </Routes>
         </div>
-        <Footer /> 
+        <Footer />
       </BrowserRouter>
     </div>
   );
