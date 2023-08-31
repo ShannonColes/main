@@ -1,12 +1,28 @@
 const Project = require("../models/projectModel");
-
+const User = require("../models/userModel");
 //import mongoose
 const mongoose = require("mongoose");
 
 const getProjects = async (req, res) => {
-  // -1 in sort will put them in descending order (latest first)
-  const projects = await Project.find({}).sort({ createdAt: -1 });
-  res.status(200).json(projects);
+  try {
+    const { user_email } = req.params; // Get user_email from query parameters
+
+    // Find the user based on the email
+    const user = await User.findOne({ email: user_email });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Fetch projects for the user using their _id
+    const projects = await Project.find({ user_id: user._id }).sort({
+      createdAt: -1,
+    });
+
+    res.status(200).json(projects);
+  } catch (error) {
+    res.status(500).json({ error: "Could not fetch projects" });
+  }
 };
 
 const getProject = async (req, res) => {

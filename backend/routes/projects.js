@@ -1,27 +1,25 @@
 //Import express
-const express = require ('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
 //Import controllers
 const {
-    getProjects,
-    getProject,
-    createProject,
-    updateProject,
-    deleteProject
-} = require ('../controllers/projectController')
+  getProjects,
+  getProject,
+  createProject,
+  updateProject,
+  deleteProject,
+} = require("../controllers/projectController");
 
-
-router.get('/', getProjects)
-
+router.get("/", getProjects);
 // GET a single workout
-router.get('/:id', getProject)
+router.get("/:id", getProject);
 
-router.post('/', createProject)
+router.post("/", createProject);
 
 // UPDATE a workout
-router.patch('/:id', updateProject)
+router.patch("/:id", updateProject);
 
-router.delete('/', deleteProject)
+router.delete("/", deleteProject);
 
 module.exports = router;
