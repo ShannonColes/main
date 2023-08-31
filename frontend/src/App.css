@@ -161,7 +161,6 @@ input:focus {
   font-weight: bold;
   margin: 10px;
   cursor: pointer;
-
 }
 
 .logo {
@@ -170,8 +169,8 @@ input:focus {
 
 a.profile-btn {
   color: black;
-  cursor: pointer;
 }
+
 /* NAVBAR END ------------------------------------------------------------------------ */
 
 /* responsive navbar  */
@@ -284,9 +283,11 @@ form button {
 .students-grid-container {
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, 300px); */
   justify-items: center;
-  grid-template-areas: "heading heading heading";
+  /* grid-template-areas: "heading heading heading heading"; */
+  
 }
 
 .grid-item {
@@ -306,6 +307,8 @@ form button {
   text-transform: uppercase;
   color: white;
   font-size: 28px;
+  margin-top: 20px;
+  font-weight: 700;
 }
 
 .projDesc {
@@ -322,6 +325,19 @@ form button {
   background-color: white;
 }
 
+a.view-btn {
+    background: #f3ece6;
+    border-radius: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: solid;
+    color: black;
+    margin-left: 15px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
 /* .grid-item a {
   background-color: white;
   padding: 0.2rem 1.5rem;
@@ -335,11 +351,11 @@ form button {
   text-align: center;
   line-height: 2.5vh;
   text-decoration: none;
-  font-weight: bold;
-} */ 
+  font-weight: bold; */
+/* } */ 
 
+/* footer------------------------------------------------- */
 
-/* footer */
 .footer {
   display: flex;
   justify-content: space-between;
