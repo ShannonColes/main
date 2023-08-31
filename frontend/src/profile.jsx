@@ -13,14 +13,12 @@ const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
 
 const Profile = () => {
   const [userProjects, setUserProjects] = useState([]);
-  const { user_id } = useParams(); // Get user_id from route parameters
+  const { userEmail } = useParams();
 
   useEffect(() => {
     const fetchUserProjects = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:4000/api/projects?user_id=${user_id}`
-        );
+        const response = await axios.get(`http://localhost:4000/api/projects`);
         console.log("API RESPONSE:", response.data);
         if (response.status === 200) {
           setUserProjects(response.data);
@@ -31,26 +29,52 @@ const Profile = () => {
     };
 
     fetchUserProjects();
-  }, [user_id]);
+  }, []);
 
-  const projectElements = userProjects.map((project) => (
-    <div
-      key={project._id}
-      className="grid-item"
-      style={{ backgroundColor: randomColour }}>
-      <img className="projImage" src={project.imageURL} alt="project" />
-      <h3 className="projTitle">{project.title}</h3>
-      <p className="projDesc">{project.description}</p>
-      <ProjectDetails project={project} />
-    </div>
-  ));
+  const randomColour = getRandomColour();
 
-  return (
-    <div>
-      {projectElements}
-      <ProjectForm />
-    </div>
+  const selectedUserProjects = userProjects.filter(
+    (project) => project.user_id === userEmail
   );
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const user_id = user.email;
+
+  if (user_id === userEmail) {
+    return (
+      <div>
+        <div>
+          {selectedUserProjects.map((project) => (
+            <div
+              key={project._id}
+              className="grid-item"
+              style={{ backgroundColor: randomColour }}>
+              <img className="projImage" src={project.imageURL} alt="project" />
+              <h3 className="projTitle">{project.title}</h3>
+              <p className="projDesc">{project.description}</p>
+              <ProjectDetails project={project} />
+            </div>
+          ))}
+        </div>
+        <ProjectForm />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {selectedUserProjects.map((project) => (
+          <div
+            key={project._id}
+            className="grid-item"
+            style={{ backgroundColor: randomColour }}>
+            <img className="projImage" src={project.imageURL} alt="project" />
+            <h3 className="projTitle">{project.title}</h3>
+            <p className="projDesc">{project.description}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
 };
 //   const { projects, dispatch } = useProjectContext();
 //   const user = JSON.parse(localStorage.getItem("user"));

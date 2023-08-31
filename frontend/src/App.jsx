@@ -35,10 +35,8 @@ function App() {
               element={!user ? <Signup /> : <Navigate to={"/"} />}
             />
             <Route
-              path="/profile/:userId"
-              element={
-                user ? <Profile userId={user.id} /> : <Navigate to={"/login"} />
-              }
+              path="/profile/:userEmail"
+              element={user ? <Profile /> : <Navigate to="/login" />}
             />
           </Routes>
         </div>

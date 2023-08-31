@@ -52,7 +52,7 @@ const Homepage = () => {
       </p>
       <Link
         key={profile._id}
-        to={`/profile/${profile._id}`}
+        to={`/profile/${profile.email}`}
         className="view-btn">
         View More
       </Link>
@@ -68,10 +68,8 @@ const Homepage = () => {
           specialist creative and technology college.
         </h2>
       </div>
-      <div className="students-grid-container">
-        <h1 className="section-heading">Users Profiles</h1>
-        {profileElements}
-      </div>
+      <h1 className="section-heading">Users Profiles</h1>
+      <div className="students-grid-container">{profileElements}</div>
     </>
   );
   //   useEffect(() => {
