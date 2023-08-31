@@ -54,9 +54,7 @@ const Homepage = () => {
         key={profile._id}
         to={`/profile/${profile._id}`}
         className="view-btn">
-        <div>
-          <a>View More</a>
-        </div>
+        View More
       </Link>
     </div>
   ));

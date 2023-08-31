@@ -33,6 +33,7 @@ const getProject = async (req, res) => {
     return res.status(404).json({ error: "No such Projects" });
   }
 
+  
   // Try find a workout by its id - will set workout to it if successful
   const project = await Project.findById(id);
 
