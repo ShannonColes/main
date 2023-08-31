@@ -160,6 +160,7 @@ input:focus {
   border-radius: 10px;
   font-weight: bold;
   margin: 10px;
+  cursor: pointer;
 
 }
 
@@ -169,6 +170,7 @@ input:focus {
 
 a.profile-btn {
   color: black;
+  cursor: pointer;
 }
 /* NAVBAR END ------------------------------------------------------------------------ */
 
@@ -263,8 +265,8 @@ form button {
 
 .header {
   position: absolute;
-  top: 40%;
-  left: 45%;
+  top: 50%;
+  left: 50%;
   text-align: center;
   transform: translateX(-50%) translateY(-50%);
   font-weight: 700;
@@ -320,12 +322,12 @@ form button {
   background-color: white;
 }
 
-.grid-item a {
+/* .grid-item a {
   background-color: white;
   padding: 0.2rem 1.5rem;
   /* width: 5vw; */
   /* height: 2vw; */
-  justify-self: start;
+  /* justify-self: start;
   align-self: end;
   margin: 0 0 2vh 2vw;
   border-radius: 50px;
@@ -334,8 +336,10 @@ form button {
   line-height: 2.5vh;
   text-decoration: none;
   font-weight: bold;
-}
+} */ 
 
+
+/* footer */
 .footer {
   display: flex;
   justify-content: space-between;
