@@ -1,28 +1,11 @@
 const Project = require("../models/projectModel");
-const User = require("../models/userModel");
 //import mongoose
 const mongoose = require("mongoose");
 
 const getProjects = async (req, res) => {
-  try {
-    const { user_email } = req.params; // Get user_email from query parameters
-
-    // Find the user based on the email
-    const user = await User.findOne({ email: user_email });
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    // Fetch projects for the user using their _id
-    const projects = await Project.find({ user_id: user._id }).sort({
-      createdAt: -1,
-    });
-
-    res.status(200).json(projects);
-  } catch (error) {
-    res.status(500).json({ error: "Could not fetch projects" });
-  }
+  // -1 in sort will put them in descending order (latest first)
+  const projects = await Project.find({}).sort({ createdAt: -1 });
+  res.status(200).json(projects);
 };
 
 const getProject = async (req, res) => {
@@ -33,7 +16,6 @@ const getProject = async (req, res) => {
     return res.status(404).json({ error: "No such Projects" });
   }
 
-  
   // Try find a workout by its id - will set workout to it if successful
   const project = await Project.findById(id);
 
@@ -90,10 +72,14 @@ const updateProject = async (req, res) => {
   res.status(200).json(project);
 };
 
+// delete the project by using it's 'id'
 const deleteProject = async (req, res) => {
+  // this extracts the 'id' from the requested parameters
   const { id } = req.params;
 
+  // this checks to make sure the 'id' is valid
   if (!mongoose.Types.ObjectId.isValid(id)) {
+    // if it isn't valid it will throw an error
     return res.status(404).json({ error: "No such project" });
   }
 
