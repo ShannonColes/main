@@ -23,8 +23,64 @@ const getRandomColour = () => {
 
 const Homepage = () => {
   // const state
-  const { projects, dispatch } = useProjectContext();
+  const [userProfiles, setUserProfiles] = useState(null);
 
+  useEffect(() => {
+    const fetchUserProfiles = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/api/users");
+
+        if (response.status === 200) {
+          setUserProfiles(repsonse.data);
+        }
+      } catch (error) {
+        console.error("Error Fetching User Profiles", error);
+      }
+    };
+
+    fetchUserProfiles();
+  }, []);
+
+  const profileElements = userProfiles.map((user) => (
+    <Link key={user._id} to={`/profile/${user._id}`} className="profile-link">
+      <div
+        className="user-profile"
+        style={{ backgroundColor: getRandomColour() }}>
+        <h3 className="user-name">{user.name}</h3>
+      </div>
+    </Link>
+  ));
+
+  if (userProfiles === null) {
+    const randomColour = getRandomColour();
+    return (
+      <div className="loader-container">
+        <InfinitySpin
+          visible={true}
+          color={randomColour}
+          size={100}
+          speed={1}
+          style={{ display: "block", margin: "0 auto" }}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="header-image">
+        <img className="headerImg" src={headerImage} />
+        <h2 className="header">
+          Yoobee College of Creative Innovation is New Zealand’s largest
+          specialist creative and technology college.
+        </h2>
+      </div>
+      <div className="users-grid-container">
+        <h1 className="section-heading">Users Profiles</h1>
+        {profileElements}
+      </div>
+    </>
+  );
   useEffect(() => {
     const fetchProjects = async () => {
       try {
