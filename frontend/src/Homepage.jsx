@@ -7,6 +7,7 @@ import { useProjectContext } from "./hooks/useProjectContext";
 import { useAuthContext } from "./hooks/useAuthContext";
 // import components ----------------------------------------------------------------
 import headerImage from "./assets/header-background.png";
+import userImage from "./assets/user.png";
 import ProjectForm from "./components/ProjectForm";
 import ProjectDetails from "./components/ProjectDetails";
 // Landing image + header
@@ -15,22 +16,19 @@ import ProjectDetails from "./components/ProjectDetails";
 // api call to render the students into a grid of display cards & student names/details
 // student cards button to link to the portfolio page of that student.
 
-const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
-
-const getRandomColour = () => {
-  const randomIndex = Math.floor(Math.random() * colourOptions.length);
-  return colourOptions[randomIndex];
-};
-
 const Homepage = () => {
+  const getRandomColour = () => {
+    const randomIndex = Math.floor(Math.random() * colourOptions.length);
+    return colourOptions[randomIndex];
+  };
+  const colourOptions = ["#71B548", "#FF9713", "#014399", "#F14E3A", "#EF38FF"];
   // const state
   const { profiles } = useAuthContext();
 
   console.log("userProfiles:", profiles);
   // console.log("profileElements:", profileElements);
-
+  const randomColour = getRandomColour();
   if (!profiles) {
-    const randomColour = getRandomColour();
     return (
       <div className="loader-container">
         <InfinitySpin
@@ -45,16 +43,22 @@ const Homepage = () => {
   }
 
   const profileElements = profiles.map((profile) => (
-    <Link
-      key={profile._id}
-      to={`/profile/${profile._id}`}
-      className="profile-link">
-      <div
-        className="user-profile"
-        style={{ backgroundColor: getRandomColour() }}>
-        <h3 className="user-name">{profile.name}</h3>
-      </div>
-    </Link>
+    <div className="grid-item" style={{ backgroundColor: randomColour }}>
+      <img className="projImage" src={userImage} />
+      <p className="projTitle">{profile.name}</p>
+      <p className="projDesc">
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry.
+      </p>
+      <Link
+        key={profile._id}
+        to={`/profile/${profile._id}`}
+        className="view-btn">
+        <div>
+          <a>View More</a>
+        </div>
+      </Link>
+    </div>
   ));
 
   return (
@@ -66,7 +70,7 @@ const Homepage = () => {
           specialist creative and technology college.
         </h2>
       </div>
-      <div className="users-grid-container">
+      <div className="students-grid-container">
         <h1 className="section-heading">Users Profiles</h1>
         {profileElements}
       </div>
