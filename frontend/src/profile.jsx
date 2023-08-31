@@ -30,7 +30,7 @@ const Profile = ({ userId }) => {
 
     fetchUserProjects();
   }, [userId]);
-};
+
 const randomColour = getRandomColour();
 const projectElements = userProjects.map((project) => {
   return (
@@ -46,6 +46,14 @@ const projectElements = userProjects.map((project) => {
   );
 });
 
+  return (
+
+  <div>
+    {projectElements}
+    <ProjectForm />
+  </div>
+)
+};
 //   const { projects, dispatch } = useProjectContext();
 //   const user = JSON.parse(localStorage.getItem("user"));
 

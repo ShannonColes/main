@@ -24,7 +24,7 @@ function App() {
             <Route exact path="/" element={user ? <Homepage/> : <Navigate to={'/login'}/>}/>
             <Route path='/login' element={ !user ? <Login/> : <Navigate to={'/'}/>}/>
             <Route path='/signup' element={ !user ? <Signup/> : <Navigate to={'/'}/>}/>
-            <Route path="/profile" element={ user ? <Profile/> : <Navigate to={'/login'}/>}/>
+            <Route path="/profile/:userId" element={user ? <Profile/> : <Navigate to={'/login'}/>}/>
           </Routes>
         </div>
         <Footer /> 
