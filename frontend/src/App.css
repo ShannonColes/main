@@ -100,7 +100,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px
+  gap: 10px;
 }
 
 input {
@@ -123,9 +123,15 @@ input:focus {
   text-align: right;
 }
 
+.user-login a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 @keyframes spin {
   0% {
-    transform: rotate(0deg)
+    transform: rotate(0deg);
   }
 
   100% {
@@ -150,11 +156,16 @@ input:focus {
   color: rgb(0, 0, 0);
   padding: 8px;
   background-color: bisque;
+  font-family: "Inter", sans-serif;
   border-radius: 10px;
+  font-weight: bold;
   margin: 10px;
 }
+.profile-btn a {
+  color: black;
+}
 
-.logo{
+.logo {
   text-decoration: none;
 }
 
@@ -201,7 +212,16 @@ form.login {
   padding: 20px;
   background-color: #f3ece6;
   border-radius: 8px;
+  border: 1px solid #fbc494;
   font-family: "Inter", sans-serif;
+}
+
+form.login h3 {
+  margin-bottom: 1rem;
+}
+
+form.signup h3 {
+  margin-bottom: 1rem;
 }
 
 .login-signup-input {
@@ -209,7 +229,8 @@ form.login {
   margin-top: 10px;
   margin-bottom: 20px;
   width: 100%;
-  border: 1px solid white;
+  border: 1px solid #fbc494;
+  background: #fff;
   border-radius: 8px;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
@@ -221,6 +242,7 @@ form button {
   color: black;
   padding: 10px;
   font-family: "Inter", sans-serif;
+  font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
 }
@@ -230,15 +252,22 @@ form button {
 /* Homepage styling */
 
 .headerImg {
-  width: 100vw;
+  width: 100%;
+}
+
+.header-image {
+  position: relative;
+  width: 100%;
 }
 
 .header {
   position: absolute;
-  top: 20vh;
-  left: 18vw;
+  top: 40%;
+  left: 45%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
   font-weight: 700;
-  font-size: 36px;
+  font-size: clamp(10px, 2vw, 32px);
   width: 60vw;
 }
 .section-heading {
@@ -261,11 +290,12 @@ form button {
   background-color: pink;
   border-radius: 37px;
   border: solid black 1px;
-  height: 40vh;
+  /* height: 40vh; */
   width: 70%;
   display: grid;
   align-items: center;
   justify-items: start;
+  padding: 1.2rem 1rem;
 }
 
 .projTitle {
@@ -291,8 +321,9 @@ form button {
 
 .grid-item a {
   background-color: white;
-  width: 5vw;
-  height: 2vw;
+  padding: 0.2rem 1.5rem;
+  /* width: 5vw; */
+  /* height: 2vw; */
   justify-self: start;
   align-self: end;
   margin: 0 0 2vh 2vw;
@@ -309,24 +340,24 @@ form button {
   justify-content: space-between;
   background: #fbc494;
   margin-top: 4rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   align-items: center;
-  position: fixed;
   width: 100%;
-  bottom: 0;
 }
 
-.footer-socials > img {
-  margin: 0rem 1rem;
+.footer-logo img {
+  width: 50%;
 }
 
-.loader-container{
+.footer-socials img {
+  margin: 0rem 0.8rem;
+  width: 20px;
+  height: 20px;
+}
+
+.loader-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.test{
-  margin: 0;
 }

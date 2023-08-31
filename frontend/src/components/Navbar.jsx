@@ -25,8 +25,9 @@ const Navbar = () => {
           id="menu"
           onClick={() => {
             setMenuOpen(!menuOpen);
-          }}>
-          THIS IS THE MENU BUTTON
+          }}
+        >
+          {/* THIS IS THE MENU BUTTON */}
           <i className="fa-solid fa-bars"></i>
         </button>
 
