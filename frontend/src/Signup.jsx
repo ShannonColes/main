@@ -22,7 +22,7 @@ const Signup = () => {
         className="login-signup-input"
         type="name"
         onChange={(e) => setName(e.target.value)}
-        value={email}
+        value={name}
       />
 
       <label>Email: </label>

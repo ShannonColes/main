@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 // import context ----------------------------------------------------------------
 import { useProjectContext } from "./hooks/useProjectContext";
+import { useAuthContext } from "./hooks/useAuthContext";
 // import components ----------------------------------------------------------------
 import headerImage from "./assets/header-background.png";
 import ProjectForm from "./components/ProjectForm";
@@ -23,35 +24,12 @@ const getRandomColour = () => {
 
 const Homepage = () => {
   // const state
-  const [userProfiles, setUserProfiles] = useState(null);
+  const { profiles } = useAuthContext()
 
-  useEffect(() => {
-    const fetchUserProfiles = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/api/users");
+  console.log("userProfiles:", profiles);
+  // console.log("profileElements:", profileElements);
 
-        if (response.status === 200) {
-          setUserProfiles(repsonse.data);
-        }
-      } catch (error) {
-        console.error("Error Fetching User Profiles", error);
-      }
-    };
-
-    fetchUserProfiles();
-  }, []);
-
-  const profileElements = userProfiles.map((user) => (
-    <Link key={user._id} to={`/profile/${user._id}`} className="profile-link">
-      <div
-        className="user-profile"
-        style={{ backgroundColor: getRandomColour() }}>
-        <h3 className="user-name">{user.name}</h3>
-      </div>
-    </Link>
-  ));
-
-  if (userProfiles === null) {
+  if (!profiles) {
     const randomColour = getRandomColour();
     return (
       <div className="loader-container">
@@ -65,6 +43,16 @@ const Homepage = () => {
       </div>
     );
   }
+
+  const profileElements = profiles.map((profile) => (
+    <Link key={profile._id} to={`/profile/${profile._id}`} className="profile-link">
+      <div
+        className="user-profile"
+        style={{ backgroundColor: getRandomColour() }}>
+        <h3 className="user-name">{profile.name}</h3>
+      </div>
+    </Link>
+  ));
 
   return (
     <>
@@ -81,76 +69,76 @@ const Homepage = () => {
       </div>
     </>
   );
-  useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        // axios call
-        const response = await axios.get("http://localhost:4000/api/projects");
+  //   useEffect(() => {
+  //     const fetchProjects = async () => {
+  //       try {
+  //         // axios call
+  //         const response = await axios.get("http://localhost:4000/api/projects");
 
-        // check response status is okay (200)
-        if (response.status === 200) {
-          console.log(response.data);
-          dispatch({ type: "SET_PROJECTS", payload: response.data });
-          // setStudents(response.data);
-        }
-      } catch (error) {
-        console.error("Error Fetching Projects/Console.Error", error);
-      }
-    };
+  //         // check response status is okay (200)
+  //         if (response.status === 200) {
+  //           console.log(response.data);
+  //           dispatch({ type: "SET_PROJECTS", payload: response.data });
+  //           // setStudents(response.data);
+  //         }
+  //       } catch (error) {
+  //         console.error("Error Fetching Projects/Console.Error", error);
+  //       }
+  //     };
 
-    fetchProjects();
-  }, []);
+  //     fetchProjects();
+  //   }, []);
 
-  if (projects === null) {
-    const randomColour = getRandomColour();
-    return (
-      <div className="loader-container">
-        <InfinitySpin
-          visible={true}
-          color={randomColour}
-          size={100}
-          speed={1}
-          style={{ display: "block", margin: "0 auto" }}
-        />
-      </div>
-    );
-  }
+  //   if (projects === null) {
+  //     const randomColour = getRandomColour();
+  //     return (
+  //       <div className="loader-container">
+  //         <InfinitySpin
+  //           visible={true}
+  //           color={randomColour}
+  //           size={100}
+  //           speed={1}
+  //           style={{ display: "block", margin: "0 auto" }}
+  //         />
+  //       </div>
+  //     );
+  //   }
 
-  const projectElements = projects.map((project) => {
-    const randomColour = getRandomColour();
-    return (
-      <div
-        key={project._id}
-        className="grid-item"
-        style={{ backgroundColor: randomColour }}>
-        <img className="projImage" src={project.imageURL} alt="project image" />
-        <h3 className="projTitle">{project.title}</h3>
-        <p className="projDesc">{project.description}</p>
-        <Link
-          to={`/portfolio/${project.user_id}`}
-          className="view-btn"
-          style={{ color: randomColour }}>
-          View
-        </Link>
-      </div>
-    );
-  });
+  //   const projectElements = projects.map((project) => {
+  //     const randomColour = getRandomColour();
+  //     return (
+  //       <div
+  //         key={project._id}
+  //         className="grid-item"
+  //         style={{ backgroundColor: randomColour }}>
+  //         <img className="projImage" src={project.imageURL} alt="project image" />
+  //         <h3 className="projTitle">{project.title}</h3>
+  //         <p className="projDesc">{project.description}</p>
+  //         <Link
+  //           to={`/portfolio/${project.user_id}`}
+  //           className="view-btn"
+  //           style={{ color: randomColour }}>
+  //           View
+  //         </Link>
+  //       </div>
+  //     );
+  //   });
 
-  return (
-    <>
-      <div className="header-image">
-        <img className="headerImg" src={headerImage} />
-        <h2 className="header">
-          Yoobee College of Creative Innovation is New Zealand’s largest
-          specialist creative and technology college.
-        </h2>
-      </div>
-      <div className="students-grid-container">
-        <h1 className="section-heading">Students Portfolio</h1>
-        {projectElements}
-      </div>
-    </>
-  );
-};
-
+  //   return (
+  //     <>
+  //       <div className="header-image">
+  //         <img className="headerImg" src={headerImage} />
+  //         <h2 className="header">
+  //           Yoobee College of Creative Innovation is New Zealand’s largest
+  //           specialist creative and technology college.
+  //         </h2>
+  //       </div>
+  //       <div className="students-grid-container">
+  //         <h1 className="section-heading">Students Portfolio</h1>
+  //         {projectElements}
+  //       </div>
+  //     </>
+  //   );
+  // };
+}
 export default Homepage;
