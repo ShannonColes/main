@@ -46,7 +46,7 @@ const Profile = () => {
 
   const profileElements = selectedUserProfile.map((profile) => (
     <div className="profileGridContainer" key={profile.email}>
-      <img className="projImage" src={userImage} />
+      <img className="profImage" src={userImage} />
       <h2 className="userTitle">{profile.name}</h2>
       <p className="profileDesc">
         Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -67,42 +67,52 @@ const Profile = () => {
 
   if (user_id === userEmail) {
     return (
-      <div>
-        {profileElements}
-        <div>
-          {selectedUserProjects.map((project) => (
-            <div
-              key={project._id}
-              className="grid-item"
-              style={{ backgroundColor: randomColour }}>
-              <img className="projImage" src={project.imageURL} alt="project" />
-              <h3 className="projTitle">{project.title}</h3>
-              <p className="projDesc">{project.description}</p>
+      <>
+        <div className="outer-grid-container">
+          {profileElements}
+          <ProjectForm />
+          <div className="students-grid-container profileCol">
+            {selectedUserProjects.map((project) => (
+              <div
+                key={project._id}
+                className="grid-item"
+                style={{ backgroundColor: randomColour }}>
+                <img
+                  className="projImage"
+                  src={project.imageURL}
+                  alt="project"
+                />
 
-              <ProjectDetails project={project} />
-            </div>
-          ))}
+                <ProjectDetails project={project} />
+              </div>
+            ))}
+          </div>
         </div>
-        <ProjectForm />
-      </div>
+      </>
     );
   } else {
     return (
-      <div>
-        {profileElements}
-        <div>
-          {selectedUserProjects.map((project) => (
-            <div
-              key={project._id}
-              className="grid-item"
-              style={{ backgroundColor: randomColour }}>
-              <img className="projImage" src={project.imageURL} alt="project" />
-              <h3 className="projTitle">{project.title}</h3>
-              <p className="projDesc">{project.description}</p>
-            </div>
-          ))}
+      <>
+        <div className="outer-grid-container">
+          {profileElements}
+          <div>
+            {selectedUserProjects.map((project) => (
+              <div
+                key={project._id}
+                className="grid-item"
+                style={{ backgroundColor: randomColour }}>
+                <img
+                  className="projImage"
+                  src={project.imageURL}
+                  alt="project"
+                />
+                <h3 className="projTitle">{project.title}</h3>
+                <p className="projDesc">{project.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 };

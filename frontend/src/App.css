@@ -106,7 +106,7 @@ nav ul li a:hover {
 input {
   background-color: transparent;
   border: none;
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
   margin-left: 5px;
 }
@@ -282,6 +282,7 @@ form button {
 
 .students-grid-container {
   display: grid;
+  grid-area: items;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   /* grid-template-columns: repeat(auto-fit, 300px); */
@@ -381,4 +382,77 @@ a.view-btn {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Profile Page Start */
+
+.outer-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: 
+  "prof prof form"
+  "prof prof form"
+  "items items items"
+  ;
+  gap: 4rem;
+}
+
+.create {
+  grid-area: form;
+  margin-top: 3rem;
+
+  background-color: #F3ECE6;
+  border-radius: 30px;
+  padding: 2rem
+}
+
+.create h3{
+  font-size: 36px;
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.create label{
+  text-align: left;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.create input{
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 2rem;
+  border-radius: 30px;
+}
+
+.profImage{
+  grid-area: image;
+  width: 100%;
+  align-self: center;
+
+}
+
+.userTitle {
+  grid-area: name;
+  align-self: end;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+.profileDesc {
+  grid-area: desc;
+}
+.profileGridContainer{
+  margin-top: 2rem;
+  gap: 20px;
+  display: grid;
+  grid-area: prof;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "image name name"
+  "image desc desc";
+}
+
+.profileCol{
+  background-color:#F3ECE6 ;
+  padding: 5rem 0;
 }
