@@ -1,15 +1,12 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { InfinitySpin } from "react-loader-spinner";
 // import context ----------------------------------------------------------------
-import { useProjectContext } from "./hooks/useProjectContext";
+
 import { useAuthContext } from "./hooks/useAuthContext";
 // import components ----------------------------------------------------------------
 import headerImage from "./assets/header-background.png";
 import userImage from "./assets/user.png";
-import ProjectForm from "./components/ProjectForm";
-import ProjectDetails from "./components/ProjectDetails";
+
 // Landing image + header
 // h1 students portfolio
 // grid to display students
