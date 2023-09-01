@@ -20,6 +20,6 @@ router.post("/", createProject);
 // UPDATE a workout
 router.patch("/:id", updateProject);
 
-router.delete("/", deleteProject);
+router.delete("/:id", deleteProject);
 
 module.exports = router;
